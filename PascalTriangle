@@ -1,0 +1,20 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        dp=[[0]*(numRows) for i in range(numRows)]
+        for i in range(numRows):
+            for j in range(numRows):
+                if i==j:
+                    dp[i][j]=1
+                elif j==0:
+                    dp[i][j]=1
+                else:
+                    dp[i][j]=dp[i-1][j-1]+dp[i-1][j]
+        l1=[]
+        #return dp
+        for i in range(len(dp)):
+            l=[]
+            for j in range(len(dp[0])):
+                if dp[i][j]!=0:
+                    l.append(dp[i][j])
+            l1.append(l)
+        return l1
